@@ -3,12 +3,14 @@ const skills = [
   { id: 2, name: "HTML", experience: "beginner" },
   { id: 3, name: "CSS", experience: "beginner" },
   { id: 4, name: "w3schools", experience: "beginner" },
+  { id: 5, name: "Bootstrap", experience: "beginner" },
 ];
 
 module.exports = {
   getAll,
   findSkillById,
   create,
+  deleteOne,
 };
 
 function findSkillById(id) {
@@ -24,4 +26,9 @@ function create(skill) {
 function getAll() {
   console.log(skills);
   return skills;
+}
+function deleteOne(id) {
+  id = parseInt(id);
+  const idx = skills.findIndex((skill) => skill.id === id);
+  skills.splice(idx, 1);
 }

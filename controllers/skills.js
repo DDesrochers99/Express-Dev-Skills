@@ -1,11 +1,14 @@
-const skills = require("../models/skill");
+// controllers/skills
+
 module.exports = {
   index,
   show,
   new: newSkill,
   create,
+  delete: deleteskill,
 };
 
+const skills = require("../models/skill");
 // Index action - GET /skills
 function index(req, res) {
   res.render("skills/index", { skills: skills.getAll() });
@@ -30,4 +33,7 @@ function create(req, res) {
   skills.create(req.body);
   res.redirect("/skills");
 }
-
+function deleteskill(req, res) {
+  skills.deleteOne(req.params.id);
+  res.redirect("/skills");
+}
