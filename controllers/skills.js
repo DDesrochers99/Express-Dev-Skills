@@ -11,10 +11,9 @@ function index(req, res) {
   res.render("skills/index", { skills: skills.getAll() });
 }
 
-// Show action - GET /skills/:id
 function show(req, res) {
   const id = parseInt(req.params.id);
-  const skill = skills.find((skill) => skill.id === id);
+  const skill = skills.findSkillById(id);
 
   if (skill) {
     res.render("skills/show", { skill });

@@ -7,22 +7,21 @@ const skills = [
 
 module.exports = {
   getAll,
-  getOne,
+  findSkillById,
   create,
 };
 
-function getAll() {
-  console.log(skills);
-  return skills;
-}
-
-function getOne(id) {
-  id = parseInt(id);
-  return skills.find((todo) => skill.id === id);
+function findSkillById(id) {
+  return skills.find((skill) => skill.id === id);
 }
 
 function create(skill) {
   skill.id = Date.now() % 1000000;
   skill.done = false;
   skills.push(skill);
+}
+
+function getAll() {
+  console.log(skills);
+  return skills;
 }
