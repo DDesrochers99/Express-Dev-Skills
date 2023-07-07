@@ -5,4 +5,24 @@ const skills = [
   { id: 4, name: "w3schools", experience: "beginner" },
 ];
 
-module.exports = skills;
+module.exports = {
+  getAll,
+  getOne,
+  create,
+};
+
+function getAll() {
+  console.log(skills);
+  return skills;
+}
+
+function getOne(id) {
+  id = parseInt(id);
+  return skills.find((todo) => skill.id === id);
+}
+
+function create(skill) {
+  skill.id = Date.now() % 1000000;
+  skill.done = false;
+  skills.push(skill);
+}

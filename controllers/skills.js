@@ -1,8 +1,14 @@
 const skills = require("../models/skill");
+module.exports = {
+  index,
+  show,
+  new: newSkill,
+  create,
+};
 
 // Index action - GET /skills
 function index(req, res) {
-  res.render("skills/index", { skills });
+  res.render("skills/index", { skills: skills.getAll() });
 }
 
 // Show action - GET /skills/:id
@@ -16,8 +22,13 @@ function show(req, res) {
     res.status(404).send("Skill not found.");
   }
 }
+function newSkill(req, res) {
+  res.render("skills/new", { title: "New Skill" });
+}
 
-module.exports = {
-  index,
-  show,
-};
+function create(req, res) {
+  console.log(req.body);
+  skills.create(req.body);
+  res.redirect("/skills");
+}
+
